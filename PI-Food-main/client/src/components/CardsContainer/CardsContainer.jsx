@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const CardsContainer =()=>{
 
-    const recetas = useSelector(state=>state.recipes);
+    const recetas = useSelector(state=>state.allRecipes);
     // const recetas = [
     //     {id:1, image: "Aqui va la imagen", title:"Lasagna Bolognesa", diets: ["paleolitics", "primal"]},
     //     {id:2, image: "Aqui va la imagen", title:"Carne asada", diets: ["lacto ovo vegetarian", "gluten free"]},
@@ -20,6 +20,7 @@ const CardsContainer =()=>{
         {
             recetas.map(rec=> {
                 return <Card 
+                            key = {rec.id}    
                             id= {rec.id}
                             image = {rec.image}
                             title = {rec.title}
