@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecipeByID, deleteRecipe } from "../../redux/actions";
 import { useParams } from "react-router-dom";
-
+import style from "./Detail.module.css"
 
 const Detail = ()=>{
 
@@ -21,18 +21,31 @@ const Detail = ()=>{
 
     const recipe = useSelector(state=>state.recipe)
 
+    const dietsUpperCase = recipe.diets?.map(recip=>{
+        return recip.charAt(0).toUpperCase() + recip.slice(1)
+    })
+
    
     
     return (
-        <div>
+        <div className={style.organicer}>
+            <div className={style.container}>
+            <h1 className={style.title}>ID: {recipe.id}</h1>
+            <img className= {style.image} src={recipe.image} alt={recipe.title} />
+            <h2 className = {style.recipeName}>{recipe.title}</h2>
+            <h3 className={style.subTitles}>Summary: </h3>
+            <p className={style.paragraph}>{recipe.summary}</p>
+            <h3 className={style.subTitles}>Steps: </h3>
+            <p className={style.paragraph}>{recipe.steps}</p>
+            <h3 className={style.subTitles}>Diets: </h3>
+            {dietsUpperCase && <p className={style.paragraph}>{dietsUpperCase.join(", ")}</p>}
+            <div className={style.healthScore}>
+            <h3 className={style.subTitles}>HealthScore: </h3>
+            </div>
             <div>
-            <p>{recipe.id}</p>
-            <h2>{recipe.title}</h2>
-            <p>Summary: {recipe.summary}</p>
-            <h3>HealthScore: {recipe.healthScore}</h3>
-            <p>Steps: {recipe.steps}</p>
-            {recipe.diets && <p>Diets: {recipe.diets.join(", ")}</p>}
-            <img src={recipe.image} alt={recipe.title} />
+            <p className={style.number}>{recipe.healthScore}</p>
+            </div>
+            
             </div> 
         </div>
     )

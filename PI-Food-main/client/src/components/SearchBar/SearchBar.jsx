@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeByName, getAllRecipes } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 import Order from "../Order/Order";
+import style from "./SearchBar.module.css"
+
 
 
 
@@ -17,7 +19,11 @@ const SearchBar = ()=>{
     }
 
     const onSearch = (name)=>{
+        
+        try {
         dispatch(getRecipeByName(name))
+        }
+        catch(err){window.alert("There are no recipes with that name")}
 
         return setNombre("")
     }
@@ -28,17 +34,23 @@ const SearchBar = ()=>{
 
     return(
         <div>
+        <div className={style.container} >
             <input type="search" 
                    value={nombre}
-                   onChange={handleChange}/>
-            <button onClick={()=>onSearch(nombre)}>Search</button>
-            <button onClick={()=>allRecipes()}>All Recipes</button>
-            <br />
-            <Filter/>
-            <br />
-            <Order/>
+                   onChange={handleChange}
+                   className={style.input}/>
+            <button onClick={()=>onSearch(nombre)}
+                    className={style.button}>Search</button>
+            <button onClick={()=>allRecipes()}
+                    className={style.button} >All Recipes</button>
+                    
+            <span></span> 
             
-
+         </div>  
+         <div className={style.filters}>
+            <Filter />
+            <Order />
+        </div> 
             
         </div>
 

@@ -37,19 +37,7 @@ const reducer =(state=initialState, action)=>{
             const orderedRecipesTitle = action.payload==="Ascendente" ?
             [...state.allRecipes].sort((a,b)=>a.title.localeCompare(b.title)) :
             [...state.allRecipes].sort((a,b)=>b.title.localeCompare(a.title)) 
-            return {...state,allRecipes:  orderedRecipesTitle}
-
-
-         // users.sort(function (a, b) {
-//     if (a.name < b.name) {
-//       return -1;
-//     }
-//     if (a.name > b.name) {
-//       return 1;
-//     }
-//     return 0;
-//   });   
-
+            return {...state,allRecipes:  orderedRecipesTitle}  
         case ORIGINAL_ORDER:
             return {...state, allRecipes:state.recipes}   
 

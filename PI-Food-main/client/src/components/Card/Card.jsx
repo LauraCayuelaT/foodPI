@@ -6,11 +6,11 @@ const Card = (props) => {
     
     return(
         <div className = {style.card}>
-           <img src={props.image} alt={props.title}/>
+           <img className = {style.image}src={props.image} alt={props.title}/>
             <Link to = {`/detail/${props.id}`}>
-            <h2>{props.title}</h2>
+            <h2 className={style.recipeTitle}>{props.title}</h2>
             </Link>
-            <h3>Dietas: {props.diets}</h3>
+            <h3 className={style.diets}>Diets: {props.diets}</h3>
         </div>
     )
 }

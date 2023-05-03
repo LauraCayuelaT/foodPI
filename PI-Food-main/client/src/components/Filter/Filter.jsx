@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { filterByCreator, filterByDiet, getAllRecipes } from "../../redux/actions";
+import style from "./Filter.module.css"
 
 
 const Filter = ()=>{
@@ -38,20 +39,23 @@ const Filter = ()=>{
 
 
     return(
-        <div>
-            <label htmlFor="">Filter by diet  </label>
-            <select onChange={handleFilterByDiet}>
-            <option value="AllRecipes">Select an Option</option>
+        <div >
+           
+            <select onChange={handleFilterByDiet}
+                    className={style.list}>
+            <option value="AllRecipes">Filter by Diet</option>
                 {dietas?.map(dieta=>
                     <option value={dieta.name}>{dieta.name}</option> 
                         )}
             </select>
-            <label htmlFor=""> Filter by source  </label>
-            <select onChange={handleFilterByCreator}>
-                <option value="AllRecipes">Select an Option</option>
-                <option value="Base de Datos">Creada por Mi</option>
-                <option value="API">Externa</option>
+
+            <select onChange={handleFilterByCreator}
+                    className={style.list}>
+                <option value="AllRecipes">Filter by Source</option>
+                <option value="Base de Datos">Crated by User</option>
+                <option value="API">Created by App</option>
             </select>
+            
         </div>
     )
     

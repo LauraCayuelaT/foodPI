@@ -1,0 +1,74 @@
+.organicer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+    background-image: url("./img/background.jpeg");
+    height: 3000px;
+    
+   
+}
+
+.container{
+    
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid #036666 ;
+    border-radius: 20px;
+    padding: 50px;
+    width: 600px;
+    height: 2000px;
+    background-color: white;
+
+}
+
+.title{
+    
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    color: #036666;
+    font-family: monospace;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.recipeName{
+    color: #036666;
+    font-family: monospace;
+    font-size: 25px;
+    text-align: center;
+}
+
+.subTitles{
+    font-family: monospace;
+    font-size: 23px;
+    color: #99E2B4;
+    font-style: bold;
+    margin-right: 2000px;
+    top: 0;
+    bottom: 0;
+}
+
+.paragraph{
+    font-family: monospace;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.image{
+    border-radius: 25px;
+    position: relative;
+    padding: 15px;
+    max-width: 100%;
+    height: auto;
+    
+}
+
+
+
+.number{
+    font-family: monospace;
+    font-size: 25px;
+    text-align: justify;
+}

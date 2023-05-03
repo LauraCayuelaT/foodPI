@@ -1,0 +1,17 @@
+
+
+
+.list{
+    border-radius: 8px;
+    border: solid 3px #14746F;
+    background-color: #14746F;
+    color: white;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 17px;   
+    margin-top: 10px;  
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+
+}

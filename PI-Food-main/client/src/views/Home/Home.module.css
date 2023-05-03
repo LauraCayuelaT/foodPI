@@ -1,0 +1,29 @@
+.title{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #036666;
+    font-size: 70px;
+    font-family: monospace;
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.094);
+    background-image: url("./img/2548748.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: sticky;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    /* position: sticky;
+    top: 0px;
+    width: 100%; */
+    
+}
+

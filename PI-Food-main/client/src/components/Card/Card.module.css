@@ -1,10 +1,41 @@
 .card{
-    
-    justify-content: center;
-    border: 1px solid pink;
+    text-align: center;
+    border: 2px solid #036666;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
+    height:500px;
+    width: 320px;
+    background-color: #036666;
+}
+
+.image{
+    border-radius: 15px;
+    padding: 5px;
+    height: 230px;
+    width: 310px;
+
+}
+
+.recipeTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 25px;
+    color: #e4eeee;
+     
     
 
 }
+.diets{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: monospace;
+    font-size: 17px;  
+    color: #83e1e1;
+    margin-left: 10px;
+    text-align: center;
+}
+

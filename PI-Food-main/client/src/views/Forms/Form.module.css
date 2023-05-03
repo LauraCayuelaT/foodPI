@@ -1,0 +1,105 @@
+.container{
+    /* padding:30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 400px;
+    margin-right: 400px;
+    background-color: #6fd6b8; */
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #6fd6b8;
+
+}
+
+.title{
+    font-family: monospace;
+    font-size: 20px;
+    display: flex;
+    color: #036666;
+    font-weight: bold ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.box{
+    background-image: url("../Detail/img/background.jpeg");
+    flex: 1;
+    background-size: cover;
+}
+
+.input{
+    font-family: monospace;
+    color: #036666;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 2px solid #036666;
+   
+
+}
+
+.textBox{
+    font-family: monospace;
+    color: #036666;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 2px solid #036666;
+      
+
+}
+
+.healthBox{
+    font-family: monospace;
+    color: #036666;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 2px solid #036666;
+   
+}
+
+.errores{
+    /* color:red;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center; */
+    color:red;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+
+
+    
+}
+
+
+.button{
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #14746F;
+    font-weight: bold ;
+    font-family: monospace;
+    font-size: 20px;
+    height: auto;
+    width: max-content;
+    padding: 10px;
+    background-color: #14746F;
+    margin-bottom: 30px;
+
+}
+
+.diets{
+    font-family: monospace;
+    color: #036666;
+    font-size: 18px;
+}
+
+.allDiets{
+    text-align: center;
+}

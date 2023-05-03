@@ -22,10 +22,12 @@ export const getAllRecipes = ()=>{
 
 export const getRecipeByID = (id)=>{
     return async function (dispatch) {
+        try {
         const receta = await axios(`http://localhost:3001/recipes/${id}`);
         const recetaID = receta.data;
         
-        dispatch({type: GET_RECIPE_ID, payload: recetaID})
+        dispatch({type: GET_RECIPE_ID, payload: recetaID})}
+        catch(err){alert(`There is no recipe with that ID ${id}` )}
 
     }
 }
@@ -67,9 +69,11 @@ export const getAllDiets = ()=>{
 
 export const getRecipeByName = (name)=>{
     return async function(dispatch){
+        try{
         const receta = await axios.get(`http://localhost:3001/recipes?name=${name}`)
         const recetaNombre = receta.data;
-        dispatch({type: RECEIP_BY_NAME, payload: recetaNombre})
+        dispatch({type: RECEIP_BY_NAME, payload: recetaNombre})}
+        catch(err){alert(`There is no recipe named ${name}`)}
     }
 }
 
