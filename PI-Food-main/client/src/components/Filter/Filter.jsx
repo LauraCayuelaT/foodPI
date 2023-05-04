@@ -52,7 +52,7 @@ const Filter = ()=>{
             <select onChange={handleFilterByCreator}
                     className={style.list}>
                 <option value="AllRecipes">Filter by Source</option>
-                <option value="Base de Datos">Crated by User</option>
+                <option value="Base de Datos">Created by User</option>
                 <option value="API">Created by App</option>
             </select>
             

@@ -14,7 +14,7 @@ export const ORIGINAL_ORDER = "ORIGINAL_ORDER"
 
 export const getAllRecipes = ()=>{
     return async function (dispatch) {
-        const recetas = await axios("http://localhost:3001/recipes");
+        const recetas = await axios("/recipes");
         const allRecipes = recetas.data;
         dispatch({type: GET_ALL_RECIPES, payload: allRecipes});
     }
@@ -23,7 +23,7 @@ export const getAllRecipes = ()=>{
 export const getRecipeByID = (id)=>{
     return async function (dispatch) {
         try {
-        const receta = await axios(`http://localhost:3001/recipes/${id}`);
+        const receta = await axios(`/recipes/${id}`);
         const recetaID = receta.data;
         
         dispatch({type: GET_RECIPE_ID, payload: recetaID})}
@@ -61,7 +61,7 @@ export const orderByHealthScore = (order)=>{
 
 export const getAllDiets = ()=>{
     return async function (dispatch) {
-        const dietas = await axios.get("http://localhost:3001/diets")
+        const dietas = await axios.get("/diets")
         const allDiets = dietas.data;
         dispatch({type:GET_ALL_DIETS,payload:allDiets})
     }
@@ -70,7 +70,7 @@ export const getAllDiets = ()=>{
 export const getRecipeByName = (name)=>{
     return async function(dispatch){
         try{
-        const receta = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        const receta = await axios.get(`/recipes?name=${name}`)
         const recetaNombre = receta.data;
         dispatch({type: RECEIP_BY_NAME, payload: recetaNombre})}
         catch(err){alert(`There is no recipe named ${name}`)}

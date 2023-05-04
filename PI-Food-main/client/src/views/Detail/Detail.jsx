@@ -25,6 +25,11 @@ const Detail = ()=>{
         return recip.charAt(0).toUpperCase() + recip.slice(1)
     })
 
+    const recipeSteps = recipe.steps?.map(rp=>{
+        return rp.number + ". " + rp.step
+    })
+
+
    
     
     return (
@@ -36,7 +41,7 @@ const Detail = ()=>{
             <h3 className={style.subTitles}>Summary: </h3>
             <p className={style.paragraph}>{recipe.summary}</p>
             <h3 className={style.subTitles}>Steps: </h3>
-            <p className={style.paragraph}>{recipe.steps}</p>
+            <p className={style.paragraph}>{recipeSteps?.join(", ")}</p>
             <h3 className={style.subTitles}>Diets: </h3>
             {dietsUpperCase && <p className={style.paragraph}>{dietsUpperCase.join(", ")}</p>}
             <div className={style.healthScore}>

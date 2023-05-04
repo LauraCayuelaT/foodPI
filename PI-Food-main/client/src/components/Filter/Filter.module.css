@@ -11,10 +11,8 @@
     margin-right: 10px;
     margin-left: 10px;
     text-align: center;
-    height: auto;
-
-
-
-
+    height: 26px;
+    width: 250px;
+    cursor: pointer;
 }
 

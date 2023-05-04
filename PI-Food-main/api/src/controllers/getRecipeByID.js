@@ -3,6 +3,7 @@ const { API_KEY } = process.env;
 const {Recipe, Diet} = require("../db")
 
 
+
 const getRecipeByID = async(idRecipe)=>{
 
 
@@ -12,19 +13,24 @@ const getRecipeByID = async(idRecipe)=>{
 
     const recipeByID = await axios.get(`https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${API_KEY}`);
     
-    
+    if(recipeByID.data.vegetarian) { recipeByID.data.diets.push("vegetarian")}
 
     return {
         id:recipeByID.data.id,
         title: recipeByID.data.title,
         image: recipeByID.data.image,
-        summary: recipeByID.data.summary,
+        summary: recipeByID.data.summary.replace( /(<([^>]+)>)/ig, ''),
         healthScore: recipeByID.data.healthScore,
-        steps: recipeByID.data.instructions,
-        diets: recipeByID.data.diets
+        // steps: recipeByID.data.instructions.replace( /(<([^>]+)>)/ig, ''),
+        steps: recipeByID.data.analyzedInstructions[0]?.steps.map(sp=> {return {number: sp.number, step:sp.step}}),
+        diets: recipeByID.data.diets,
+        vegan: recipeByID.data.vegan,
+        vegetarian: recipeByID.data.vegetarian,
+        glutenFree: recipeByID.data.glutenFree,
     }
   
     }
+    
 
     const recipeID = await Recipe.findByPk(idRecipe,{
             include:[{
@@ -32,10 +38,20 @@ const getRecipeByID = async(idRecipe)=>{
                 attributes: ["name"],
                 through: {attributes:[]}
             }]});
+            
 
 
-
-    return recipeID;
+           
+            return {
+                id:recipeID.id,
+                title: recipeID.title,
+                image: recipeID.image,
+                summary: recipeID.summary,
+                healthScore: recipeID.healthScore,
+                steps: recipeID.steps,
+                diets: recipeID.diets.map(diet=>diet.name),
+                
+            }
 
 }
 

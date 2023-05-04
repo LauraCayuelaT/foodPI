@@ -15,8 +15,7 @@
     font-size: 20px;
     font-family: monospace;
     margin-bottom: 0;
-
-
+    cursor: pointer;
 }
 
 .button{
@@ -27,16 +26,14 @@
     font-family: monospace;
     font-size: 20px;
     background-color: #14746F;
+    cursor: pointer;
+    margin-left: 10px;
 
 }
 
 .filters{
-
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
-
 }
 

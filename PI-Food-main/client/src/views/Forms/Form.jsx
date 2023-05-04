@@ -99,7 +99,7 @@ const Form = ()=>{
     const submitHandler = (event)=>{
         event.preventDefault();
         if(Object.keys(errors).length===0 && checked){
-        axios.post("http://localhost:3001/recipes",form)
+        axios.post("/recipes",form)
         .then(res=>alert("Creado Exitosamente"))
         .catch(err=>alert(err))}
         else{alert("Missing information or the title already exist!")}

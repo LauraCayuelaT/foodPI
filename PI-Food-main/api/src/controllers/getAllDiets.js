@@ -1,5 +1,6 @@
 const { Diet } =require("../db");
-const axios = require("axios")
+const axios = require("axios");
+const { getRecipeByApi } = require("./getAllRecipes");
 const { API_KEY } =process.env;
 
 
@@ -8,20 +9,22 @@ const getApiDiets = async ()=>{
 
     const allDiets= new Set()
 
-    try {
     const allRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
     const { results } = allRecipes.data
-    
-    
+
     results?.forEach(receta=> 
-        receta.diets?.forEach(diet=>allDiets.add(diet)));
+        { if(receta.vegetarian) receta.diets.push("vegetarian");
+        receta.diets?.forEach(diet=>allDiets.add(diet))}
+        );
 
     const apiDiets = Array.from(allDiets);
+
+    console.log(apiDiets)
     
         
-    return apiDiets; }
-    catch(err){throw Error("No está haciendo el array de dietas")}
+    return apiDiets; 
+ 
     
 
 }
