@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { filterByCreator, filterByDiet, getAllRecipes } from "../../redux/actions";
+import { filterByCreator, filterByDiet, getAllRecipes, updateDietFilter, updateSourceFilter } from "../../redux/actions";
 import style from "./Filter.module.css"
 
 
@@ -12,15 +12,18 @@ const Filter = ()=>{
         
         if(event.target.value==="AllRecipes"){
             dispatch(getAllRecipes())
+            dispatch(updateSourceFilter(""))
         }
 
         else if(event.target.value==="Base de Datos"){
             const created = true;
             dispatch(filterByCreator(created))
+            dispatch(updateSourceFilter(created))
         }
         else{
             const created = false;
             dispatch(filterByCreator(created))
+            dispatch(updateSourceFilter(created))
         }
         
     }
@@ -31,8 +34,10 @@ const Filter = ()=>{
 
         if(value==="AllRecipes"){
             dispatch(getAllRecipes())
+            dispatch(updateDietFilter(""))
         }
-        else{dispatch(filterByDiet(value))}
+        else{dispatch(filterByDiet(value))
+             dispatch(updateDietFilter(value))}
         
 
     }

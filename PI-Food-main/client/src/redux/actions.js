@@ -9,7 +9,10 @@ export const ORDER_BY_SCORE = "ORDER_BY_SCORE";
 export const GET_ALL_DIETS = "GET_ALL_DIETS";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 export const RECEIP_BY_NAME = "RECEIP_BY_NAME";
-export const ORIGINAL_ORDER = "ORIGINAL_ORDER"
+export const ORIGINAL_ORDER = "ORIGINAL_ORDER";
+export const NEXT_RECIPE = "NEXT_RECIPE";
+export const UPTADE_DIETFILTER = "UPTADE_DIETFILTER";
+export const UPTADE_SOURCEFILTER = "UPTADE_SOURCEFILTER"
 
 
 export const getAllRecipes = ()=>{
@@ -80,4 +83,16 @@ export const getRecipeByName = (name)=>{
 export const originalOrder = ()=>{
     return function (dispatch) {
         dispatch({type: ORIGINAL_ORDER })}
+}
+
+export const updateDietFilter = (diet)=>{
+    return function (dispatch) {
+        dispatch({type: UPTADE_DIETFILTER, payload: diet })}
+
+}
+
+export const updateSourceFilter = (source)=>{
+    return function (dispatch) {
+        dispatch({type: UPTADE_SOURCEFILTER, payload: source })}
+
 }

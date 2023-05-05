@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRecipeByID, deleteRecipe } from "../../redux/actions";
+import { getRecipeByID, deleteRecipe, nextRecipe } from "../../redux/actions";
 import { useParams } from "react-router-dom";
-import style from "./Detail.module.css"
+import style from "./Detail.module.css";
+import { Link } from "react-router-dom";
 
 const Detail = ()=>{
 
@@ -29,12 +30,16 @@ const Detail = ()=>{
         return rp.number + ". " + rp.step
     })
 
-
+   
+   
    
     
     return (
         <div className={style.organicer}>
             <div className={style.container}>
+            <div className={style.closeButtonContainer}>
+            <Link to="/home"><button className={style.closeButton}>CLOSE</button></Link>
+            </div>
             <h1 className={style.title}>ID: {recipe.id}</h1>
             <img className= {style.image} src={recipe.image} alt={recipe.title} />
             <h2 className = {style.recipeName}>{recipe.title}</h2>

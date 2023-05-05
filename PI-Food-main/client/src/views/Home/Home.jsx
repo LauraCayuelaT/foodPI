@@ -15,17 +15,12 @@ const Home = ()=>{
 
     const allRecipes = useSelector(state=>state.allRecipes);
 
+    //Paginado!
     const startIndex = (page -1)*perPage;
     const endIndex = startIndex + perPage;
-
     const max = Math.ceil(allRecipes?.length/ perPage);
-
     const recipesAll = allRecipes?.slice(startIndex,endIndex);
 
-
-
-
-    
 
     useEffect(()=>{
         dispatch(getAllRecipes())

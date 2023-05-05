@@ -29,9 +29,8 @@
 
 .box{
     background-image: url("../Detail/img/background.jpeg");
-    flex: 1;
-    background-size: cover;
 }
+   
 
 .input{
     font-family: monospace;

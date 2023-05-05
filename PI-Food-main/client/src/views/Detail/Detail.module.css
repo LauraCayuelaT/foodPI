@@ -4,20 +4,19 @@
     justify-content: center;
     padding: 50px;
     background-image: url("./img/background.jpeg");
-    height: 3000px;
+    height: fit-content;
     
    
 }
 
 .container{
     
-    display: flex;
-    flex-wrap: wrap;
     border: 3px solid #036666 ;
     border-radius: 20px;
-    padding: 50px;
+    padding: 40px;
+    margin-top: 30px;
     width: 600px;
-    height: 2000px;
+    height: max-content;
     background-color: white;
 
 }
@@ -71,4 +70,22 @@
     font-family: monospace;
     font-size: 25px;
     text-align: justify;
+}
+
+.closeButtonContainer{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    margin-bottom: 60px;
+
+}
+
+.closeButton{
+    font-family: monospace;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    color: #355842;
+    cursor: pointer;
+
 }

@@ -20,7 +20,7 @@ const getApiDiets = async ()=>{
 
     const apiDiets = Array.from(allDiets);
 
-    console.log(apiDiets)
+    
     
         
     return apiDiets; 
@@ -32,7 +32,6 @@ const getApiDiets = async ()=>{
 const getAllDiets = async()=>{
 
     const apiDiets = await getApiDiets();
-    
 
     apiDiets.forEach(dieta=> Diet.findOrCreate({where:{name:dieta}}))
 
