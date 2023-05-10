@@ -16,6 +16,7 @@
     font-family: monospace;
     margin-bottom: 0;
     cursor: pointer;
+    box-shadow: 10px 5px 5px black;
 }
 
 .button{
@@ -28,6 +29,7 @@
     background-color: #14746F;
     cursor: pointer;
     margin-left: 10px;
+    box-shadow: 10px 5px 5px black;
 
 }
 

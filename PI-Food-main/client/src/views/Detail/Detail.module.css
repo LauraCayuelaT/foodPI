@@ -18,6 +18,7 @@
     width: 600px;
     height: max-content;
     background-color: white;
+    box-shadow: 10px 5px 5px black;
 
 }
 
@@ -30,6 +31,8 @@
     font-family: monospace;
     font-size: 30px;
     margin-bottom: 15px;
+    text-shadow: 7px 3px 3px rgba(162, 157, 157, 0.625);
+
 }
 
 .recipeName{
@@ -37,6 +40,7 @@
     font-family: monospace;
     font-size: 25px;
     text-align: center;
+    text-shadow: 7px 3px 3px rgba(162, 157, 157, 0.625);
 }
 
 .subTitles{
@@ -47,6 +51,7 @@
     margin-right: 2000px;
     top: 0;
     bottom: 0;
+    text-shadow: 7px 3px 3px rgba(192, 239, 213, 0.957);
 }
 
 .paragraph{
@@ -78,6 +83,7 @@
     flex-direction: row;
     margin-bottom: 60px;
 
+
 }
 
 .closeButton{
@@ -87,5 +93,7 @@
     border: none;
     color: #355842;
     cursor: pointer;
+    text-shadow: 7px 3px 3px rgba(162, 157, 157, 0.625);
+
 
 }

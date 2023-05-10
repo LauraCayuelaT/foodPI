@@ -6,24 +6,28 @@
     margin-left: 400px;
     margin-right: 400px;
     background-color: #6fd6b8; */
+    
     max-width: 900px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     text-align: center;
     background-color: #6fd6b8;
+    border-radius: 30px;
+    box-shadow: 10px 5px 5px black;
 
 }
 
 .title{
     font-family: monospace;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     color: #036666;
     font-weight: bold ;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    text-shadow: 7px 3px 3px whitesmoke;
     
 }
 
@@ -38,6 +42,7 @@
     font-size: 15px;
     border-radius: 8px;
     border: 2px solid #036666;
+    box-shadow: 10px 5px 5px black;
    
 
 }
@@ -48,6 +53,8 @@
     font-size: 15px;
     border-radius: 8px;
     border: 2px solid #036666;
+    box-shadow: 10px 5px 5px black;
+    
       
 
 }
@@ -58,6 +65,7 @@
     font-size: 15px;
     border-radius: 8px;
     border: 2px solid #036666;
+    box-shadow: 10px 5px 5px black;
    
 }
 
@@ -67,6 +75,9 @@
     font-size: 15px;
     font-weight: bold;
     text-align: center; */
+    
+    margin-top: 10px;
+    display: block;
     color:red;
     font-family: monospace;
     font-size: 15px;
@@ -84,13 +95,15 @@
     border: 2px solid #14746F;
     font-weight: bold ;
     font-family: monospace;
-    font-size: 20px;
-    height: auto;
+    font-size: 30px;
+    height: max-content;
     width: max-content;
     padding: 10px;
     background-color: #14746F;
     margin-bottom: 30px;
     cursor: pointer;
+    box-shadow: 10px 5px 5px black;
+    text-shadow: 7px 3px 3px black;
 
 }
 

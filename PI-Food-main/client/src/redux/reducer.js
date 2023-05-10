@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_RECIPE_ID, GET_ALL_DIETS, DELETE_RECIPE, RECEIP_BY_NAME, FILTER_BY_CREATOR, FILTER_BY_DIET, ORDER_BY_TITLE, ORDER_BY_SCORE, ORIGINAL_ORDER, UPTADE_DIETFILTER, UPTADE_SOURCEFILTER } from "./actions";
+import { GET_ALL_RECIPES, GET_RECIPE_ID, GET_ALL_DIETS, DELETE_RECIPE, RECEIP_BY_NAME, FILTER_BY_CREATOR, FILTER_BY_DIET, ORDER_BY_TITLE, ORDER_BY_SCORE, ORIGINAL_ORDER, UPTADE_DIETFILTER, UPTADE_SOURCEFILTER, UPTADE_ORDER, UPTADE_TITLE, UPTADE_NAME, RESET_STATE, RECET_ALLRECIPES } from "./actions";
 
 
 const initialState={
@@ -7,8 +7,11 @@ const initialState={
     allDiets: [],
     recipe: {},
     dietFilter:"",
-    sourceFilter:""
-
+    sourceFilter:"",
+    orderSelector: "",
+    orderTitle:"",
+    name:"",
+    
 }
 
 const reducer =(state=initialState, action)=>{
@@ -26,7 +29,20 @@ const reducer =(state=initialState, action)=>{
         case RECEIP_BY_NAME:
             return {...state, allRecipes: action.payload}
         case FILTER_BY_CREATOR:
-            if(state.dietFilter){
+            if(state.name){
+                const filter1= state.recipes.filter(recip=>recip.title.toLowerCase().includes(state.name.toLowerCase()))
+                if(state.dietFilter){
+                    const filter2=filter1.filter(rec=>rec.diets.includes(state.dietFilter));
+                    const filter3=filter2.filter(rec=>rec.created===action.payload);
+                    return {...state, allRecipes: filter3}
+                }
+                else{
+                    const filter2=filter1.filter(rec=>rec.created===action.payload);
+                    return {...state, allRecipes:filter2}
+                }
+            }
+
+            else if(state.dietFilter){
                 const filterRecipes = state.recipes.filter(rec=>rec.diets.includes(state.dietFilter))  
                 const filter2Recipes = filterRecipes.filter(rec=>rec.created===action.payload)                                                   
                 return {...state, allRecipes:filter2Recipes}    
@@ -37,7 +53,21 @@ const reducer =(state=initialState, action)=>{
             }
                         
         case FILTER_BY_DIET:
-            if(state.sourceFilter){
+            if(state.name){
+                const filter1= state.recipes.filter(recip=>recip.title.toLowerCase().includes(state.name.toLowerCase()))
+                if(state.sourceFilter){
+                    const filter2=filter1.filter(rec=>rec.created===state.sourceFilter);
+                    const filter3=filter2.filter(rec=>rec.diets.includes(action.payload));
+                    return {...state, allRecipes: filter3}
+                }
+                else{
+                    const filter2=filter1.filter(rec=>rec.diets.includes(action.payload))
+                    return {...state, allRecipes:filter2}
+                }
+                
+            }
+
+            else if(state.sourceFilter){
                 const filter1 = state.recipes.filter(rec=>rec.created===state.sourceFilter)
                 const filter2 = filter1.filter(rec=>rec.diets.includes(action.payload))
                 return {...state,allRecipes: filter2}
@@ -63,6 +93,21 @@ const reducer =(state=initialState, action)=>{
             return {...state, dietFilter: action.payload}  
         case UPTADE_SOURCEFILTER:
             return {...state, sourceFilter: action.payload}  
+        case UPTADE_ORDER:
+            return {...state, orderSelector: action.payload}  
+        case UPTADE_TITLE:
+            return {...state, orderTitle:action.payload}
+        case UPTADE_NAME:
+            return {...state, name:action.payload}
+        case RESET_STATE:
+            return {...state,
+            dietFilter:"",
+            sourceFilter:"",
+            orderSelector: "",
+            orderTitle:"",
+            name:"" }
+        case RECET_ALLRECIPES:
+            return {...state,allRecipes: state.recipes}
 
 
         default:

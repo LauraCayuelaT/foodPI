@@ -15,6 +15,8 @@ const getRecipeByID = async(idRecipe)=>{
     
     if(recipeByID.data.vegetarian) { recipeByID.data.diets.push("vegetarian")}
 
+    const recipeSteps = recipeByID.data.analyzedInstructions[0]?.steps.map(sp=> {return sp.number + ". " + sp.step})
+
     return {
         id:recipeByID.data.id,
         title: recipeByID.data.title,
@@ -22,7 +24,7 @@ const getRecipeByID = async(idRecipe)=>{
         summary: recipeByID.data.summary.replace( /(<([^>]+)>)/ig, ''),
         healthScore: recipeByID.data.healthScore,
         // steps: recipeByID.data.instructions.replace( /(<([^>]+)>)/ig, ''),
-        steps: recipeByID.data.analyzedInstructions[0]?.steps.map(sp=> {return {number: sp.number, step:sp.step}}),
+        steps: recipeSteps.join(", "),
         diets: recipeByID.data.diets,
         vegan: recipeByID.data.vegan,
         vegetarian: recipeByID.data.vegetarian,

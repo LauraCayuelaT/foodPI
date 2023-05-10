@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipeByName, getAllRecipes } from "../../redux/actions";
+import { getRecipeByName, updateName, resetInitialState, resetAllRecipes } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 import Order from "../Order/Order";
 import style from "./SearchBar.module.css"
@@ -9,10 +9,11 @@ import style from "./SearchBar.module.css"
 
 
 
-const SearchBar = ()=>{
+const SearchBar = ({setPage})=>{
     const [nombre, setNombre] = useState("")
     const dispatch = useDispatch()
-
+   
+    
 
     const handleChange = (event)=>{
         setNombre(event.target.value)
@@ -21,7 +22,9 @@ const SearchBar = ()=>{
     const onSearch = (name)=>{
         
         try {
-        dispatch(getRecipeByName(name))
+        dispatch(getRecipeByName(name));
+        dispatch(updateName(name))
+        setPage(1)
         }
         catch(err){window.alert("There are no recipes with that name")}
 
@@ -29,7 +32,10 @@ const SearchBar = ()=>{
     }
 
     const allRecipes = ()=>{
-        dispatch(getAllRecipes())
+        dispatch(resetAllRecipes())
+        dispatch(resetInitialState());
+        setPage(1);
+    
     }
 
     return(
@@ -48,7 +54,7 @@ const SearchBar = ()=>{
             
          </div>  
          <div className={style.filters}>
-            <Filter />
+            <Filter setPage={setPage}  />
             <Order />
         </div> 
             

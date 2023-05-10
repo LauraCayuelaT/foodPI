@@ -4,7 +4,6 @@ import style from "./Landing.module.css"
 
 const Landing = ()=>{
 
-    
 
     return ( 
     
@@ -12,7 +11,7 @@ const Landing = ()=>{
      
     <div className = {style.container}> 
         <Link to="/home">
-        <button className={style.btn}> HOME PAGE </button>
+        <button className={style.btn}> <span>HOME PAGE</span> </button>
         </Link>    
     </div>
     </>)

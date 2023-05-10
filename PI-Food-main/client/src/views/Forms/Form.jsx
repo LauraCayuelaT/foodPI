@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets} from "../../redux/actions";
+import { useSelector } from "react-redux";
 import style from "./Form.module.css"
 
 
 
 const Form = ()=>{
+
+    const allDiets = useSelector(state=>state.allDiets)
     
     const [form, setForm] = useState({
         title:"",
@@ -19,35 +20,32 @@ const Form = ()=>{
     })
     
     const [errors,setErrors] = useState({
-        title:"",
-        summary: "",
-        healthScore:"",
-        steps: "",
-        image: ""
+        title:"Empty",
+        summary: "Empty",
+        healthScore:"Empty",
+        steps: "Empty",
+        image: "Empty"
         
     })
 
-    const [checked, setChecked] = useState(true)
-    const dispatch = useDispatch();
+    const [checked, setChecked] = useState(true);
+    
     
     
     useEffect(()=>{
-        dispatch(getAllDiets());
         
-        console.log(form.diet)
         if(form.diet&&form.diet.length>0){
             setChecked(true);
         }
-        else{setChecked(false)} 
-
+        else{setChecked(false)};
+        
         return ()=> setChecked(true);
         
 
     },[form.diet])
 
-   
-    
-    const allDiets = useSelector(state=>state.allDiets)
+    const disabled = Object.values(errors).every(v=> v === null)&&checked ? false:true;
+
 
     const upperDiets = allDiets?.map(d=>{
         return {id: d.id,
@@ -71,16 +69,16 @@ const Form = ()=>{
                     setErrors({...errors, [property]:"The score must be between 0 and 100"})
                 }
                 else if(property==="image"){
-                    /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/.test(form[property]) ? 
-                    setErrors({...errors, [property]:""}) :
+                    /https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/.test(form[property]) ? 
+                    setErrors({...errors, [property]:null}) :
                     setErrors({...errors, [property]:"It must be an URL"})
                 }
                 else if(property==="title"){
-                    /^[A-Z]+$/i.test(form[property]) ?
-                    setErrors({...errors, [property]:""}) :
+                    /^[A-Z_ ]+$/i.test(form[property]) ?
+                    setErrors({...errors, [property]:null}) :
                     setErrors({...errors, [property]:"No special characters or numbers allowed"})
                 }
-                else{setErrors({...errors, [property]:""})}
+                else{setErrors({...errors, [property]:null})}
 
                 
             }
@@ -93,12 +91,12 @@ const Form = ()=>{
 
     }
 
-    
+   
     
 
     const submitHandler = (event)=>{
         event.preventDefault();
-        if(Object.keys(errors).length===0 && checked){
+        if(Object.values(errors).every(v=>v===null) &&checked){
         axios.post("/recipes",form)
         .then(res=>alert("Creado Exitosamente"))
         .catch(err=>alert(err))}
@@ -106,17 +104,15 @@ const Form = ()=>{
     }
 
     const checkHandle = (event)=>{
-
         const { value, checked } = event.target;
         if(checked){
             setForm({...form, diet:[...form.diet,value]})}
         else{
             const filtredDiets = form.diet.filter(d=>d!==value)
             setForm({...form, diet: filtredDiets })}    
-        
         }
     
-
+   
 
 
     return (
@@ -212,7 +208,7 @@ const Form = ()=>{
                     {!checked && <span className={style.errores}>Please choose at least one diet</span>} 
                 </div>
                 <br />
-                <button type="submit" className={style.button}>SUBMIT</button>
+                <button type="submit" className={style.button} disabled={disabled}>SUBMIT</button>
 
 
             </form>

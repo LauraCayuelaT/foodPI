@@ -7,7 +7,7 @@ const NavBar = ()=>{
     <div className={style.mainContainer}>
         <Link to="/"><button className={style.button}>LANDING</button></Link>
         <Link to="/home"><button className={style.button}>HOME</button></Link>
-        <Link to="/form"><button className={style.button}>FORM</button></Link>
+        <Link to="/form"><button className={style.button}>CREATE RECIPE</button></Link>
 
     </div>
     )
